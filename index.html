@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Krishi Vigyan Kendra, Jalaun — ICAR farm science centre under BUAT Banda serving farmers of Jalaun district, Uttar Pradesh since 2005.">
+<title>Krishi Vigyan Kendra, Jalaun | ICAR · BUAT Banda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════
+   RESET & VARIABLES
+═══════════════════════════════════ */
+:root {
+  --forest:  #0d3318;
+  --green:   #1a5c2c;
+  --mid:     #247a3a;
+  --light:   #36a354;
+  --gold:    #b8781a;
+  --amber:   #d4a032;
+  --cream:   #f7f3ea;
+  --paper:   #fffef9;
+  --border:  #d2e6c4;
+  --tx1:     #1a2b18;
+  --tx2:     #364f31;
+  --tx3:     #6b8264;
+  --white:   #ffffff;
+}
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; font-size:16px; }
+body { font-family:'Inter',sans-serif; background:var(--paper); color:var(--tx1); -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+a { text-decoration:none; color:inherit; }
+img { display:block; max-width:100%; }
+ul,ol { list-style:none; }
+button { cursor:pointer; font-family:inherit; border:none; }
+
+/* ═══════════════════════════════════
+   TOP STRIP
+═══════════════════════════════════ */
+.topstrip {
+  background:var(--forest);
+  color:rgba(255,255,255,.78);
+  font-size:.7rem;
+  letter-spacing:.02em;
+  padding:5px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.topstrip a { color:var(--amber); margin-left:14px; transition:color .15s; }
+.topstrip a:hover { color:#fff; }
+
+/* ═══════════════════════════════════
+   HEADER
+═══════════════════════════════════ */
+.site-header {
+  background:var(--white);
+  border-bottom:3px solid var(--forest);
+  position:sticky;
+  top:0;
+  z-index:1000;
+  box-shadow:0 2px 20px rgba(13,51,24,.12);
+  display:flex;
+  align-items:stretch;
+  justify-content:space-between;
+  padding:0 40px;
+}
+.brand {
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:10px 0;
+  flex-shrink:0;
+}
+.brand-logo {
+  height:70px;
+  width:auto;
+  object-fit:contain;
+}
+.brand-text h1 {
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;
+  color:var(--forest);
+  line-height:1.25;
+  font-weight:700;
+}
+.brand-text .sub {
+  display:block;
+  font-size:.68rem;
+  color:var(--gold);
+  font-weight:600;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  margin-top:2px;
+}
+.brand-text .loc {
+  display:block;
+  font-size:.65rem;
+  color:var(--tx3);
+  margin-top:1px;
+}
+
+/* NAV */
+.main-nav { display:flex; align-items:center; gap:0; }
+.ni { position:relative; }
+.ni > a, .ni > button {
+  display:flex; align-items:center; gap:4px;
+  padding:0 12px;
+  height:100%; min-height:54px;
+  font-size:.75rem; font-weight:500;
+  color:var(--tx1);
+  background:none;
+  white-space:nowrap;
+  transition:color .15s, background .15s;
+  font-family:inherit;
+}
+.ni > a:hover, .ni > button:hover,
+.ni.curr > a, .ni.curr > button {
+  color:var(--forest);
+  background:#ebf5e8;
+}
+.ni .dd {
+  display:none;
+  position:absolute;
+  top:100%; left:0;
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:10px;
+  box-shadow:0 14px 40px rgba(13,51,24,.15);
+  min-width:210px;
+  padding:6px 0;
+  z-index:999;
+}
+.ni:hover .dd { display:block; }
+.ni .dd a {
+  display:block;
+  padding:9px 18px;
+  font-size:.76rem;
+  color:var(--tx1);
+  transition:background .12s;
+}
+.ni .dd a:hover { background:#ebf5e8; color:var(--forest); }
+.nav-cta {
+  display:inline-flex !important;
+  align-items:center;
+  background:var(--forest) !important;
+  color:#fff !important;
+  border-radius:7px;
+  height:36px !important;
+  min-height:36px !important;
+  padding:0 18px !important;
+  font-size:.75rem !important;
+  font-weight:600 !important;
+  margin:auto 0 auto 10px;
+}
+.nav-cta:hover { background:var(--green) !important; }
+
+/* hamburger */
+.burger { display:none; flex-direction:column; gap:5px; padding:10px; background:none; align-self:center; }
+.burger span { display:block; width:22px; height:2px; background:var(--forest); border-radius:2px; transition:.3s; }
+
+/* ═══════════════════════════════════
+   TICKER
+═══════════════════════════════════ */
+.ticker {
+  background:var(--gold);
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  height:34px;
+}
+.ticker-label {
+  background:var(--forest);
+  color:#fff;
+  font-size:.65rem;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  padding:0 16px;
+  height:100%;
+  display:flex; align-items:center;
+  flex-shrink:0;
+  white-space:nowrap;
+}
+.ticker-body { overflow:hidden; flex:1; }
+.ticker-inner {
+  display:flex; gap:50px;
+  animation:tick 34s linear infinite;
+  white-space:nowrap;
+  font-size:.76rem;
+  font-weight:500;
+  color:#fff;
+}
+.ticker-inner a { color:#fff; }
+.ticker-inner a:hover { text-decoration:underline; }
+.ticker-inner span::before { content:'◆ '; font-size:.5em; vertical-align:middle; opacity:.65; margin-right:4px; }
+@keyframes tick { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ═══════════════════════════════════
+   HERO SLIDER
+═══════════════════════════════════ */
+.hero { position:relative; height:520px; overflow:hidden; background:var(--forest); }
+.slides { display:flex; height:100%; transition:transform .8s cubic-bezier(.77,0,.18,1); }
+.slide { min-width:100%; height:100%; position:relative; flex-shrink:0; }
+.slide img { width:100%; height:100%; object-fit:cover; display:block; }
+.slide-fade {
+  position:absolute; inset:0;
+  background:linear-gradient(105deg,rgba(13,51,24,.85) 0%,rgba(13,51,24,.4) 52%,rgba(13,51,24,.08) 100%);
+  display:flex; align-items:center;
+  padding:0 90px;
+}
+.slide-content { max-width:560px; }
+.slide-tag {
+  display:inline-block;
+  background:var(--gold); color:#fff;
+  font-size:.62rem; font-weight:700;
+  letter-spacing:.13em; text-transform:uppercase;
+  padding:4px 14px; border-radius:20px;
+  margin-bottom:16px;
+}
+.slide-content h2 {
+  font-family:'Playfair Display',serif;
+  font-size:2.4rem; color:#fff; line-height:1.22;
+  margin-bottom:14px;
+  text-shadow:0 2px 16px rgba(0,0,0,.28);
+  font-weight:700;
+}
+.slide-content p { color:rgba(255,255,255,.87); font-size:.9rem; line-height:1.72; margin-bottom:26px; }
+.btn-gold { display:inline-block; background:var(--gold); color:#fff; padding:12px 28px; border-radius:7px; font-size:.82rem; font-weight:600; transition:all .2s; }
+.btn-gold:hover { background:var(--amber); transform:translateY(-2px); }
+.btn-ghost { display:inline-block; border:2px solid rgba(255,255,255,.6); color:#fff; padding:10px 24px; border-radius:7px; font-size:.82rem; font-weight:600; margin-left:10px; transition:all .2s; }
+.btn-ghost:hover { background:rgba(255,255,255,.14); }
+.arrow {
+  position:absolute; top:50%; transform:translateY(-50%);
+  background:rgba(255,255,255,.13); border:1.5px solid rgba(255,255,255,.3);
+  color:#fff; border-radius:50%; width:44px; height:44px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.1rem; z-index:5; transition:.2s; backdrop-filter:blur(4px);
+}
+.arrow:hover { background:rgba(255,255,255,.28); }
+.arrow.prev { left:20px; }
+.arrow.next { right:20px; }
+.dots { position:absolute; bottom:18px; left:50%; transform:translateX(-50%); display:flex; gap:7px; }
+.dot { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.35); cursor:pointer; transition:all .3s; }
+.dot.on { background:var(--amber); width:22px; border-radius:4px; }
+
+/* ═══════════════════════════════════
+   STATS BAND
+═══════════════════════════════════ */
+.stats {
+  background:var(--forest);
+  display:flex; justify-content:space-around; align-items:center;
+  padding:20px 40px; flex-wrap:wrap; gap:16px;
+}
+.stat { text-align:center; color:#fff; position:relative; }
+.stat:not(:last-child)::after {
+  content:''; position:absolute;
+  right:-16px; top:10%; height:80%; width:1px;
+  background:rgba(255,255,255,.16);
+}
+.stat .n { font-family:'Playfair Display',serif; font-size:1.7rem; color:var(--amber); display:block; font-weight:700; }
+.stat .l { font-size:.63rem; text-transform:uppercase; letter-spacing:.08em; opacity:.72; margin-top:2px; }
+
+/* ═══════════════════════════════════
+   QUICK ACCESS
+═══════════════════════════════════ */
+.quick {
+  background:var(--white); border-bottom:1px solid var(--border);
+  padding:12px 40px; display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+}
+.quick-lbl { font-size:.64rem; font-weight:700; color:var(--tx3); text-transform:uppercase; letter-spacing:.1em; margin-right:4px; flex-shrink:0; }
+.qp {
+  display:inline-block; padding:5px 13px; border-radius:20px;
+  font-size:.73rem; font-weight:500;
+  border:1.5px solid var(--border); color:var(--green);
+  transition:all .17s; white-space:nowrap;
+}
+.qp:hover,.qp.hot { background:var(--forest); color:#fff; border-color:var(--forest); }
+
+/* ═══════════════════════════════════
+   SECTIONS
+═══════════════════════════════════ */
+.sec { padding:64px 40px; }
+.sec-cream { background:var(--cream); }
+.sec-dark { background:var(--forest); }
+.sec-white { background:var(--white); }
+.sh { display:flex; align-items:flex-start; gap:14px; margin-bottom:36px; }
+.sh-bar { width:4px; min-height:38px; background:var(--amber); border-radius:3px; flex-shrink:0; margin-top:4px; }
+.sh h2 { font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--forest); font-weight:700; }
+.sh p { font-size:.79rem; color:var(--tx3); margin-top:4px; }
+.sec-dark .sh h2 { color:#fff; }
+.sec-dark .sh p { color:rgba(255,255,255,.55); }
+
+/* ═══════════════════════════════════
+   ABOUT SECTION
+═══════════════════════════════════ */
+.about-wrap { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
+.about-txt p { font-size:.875rem; line-height:1.84; color:var(--tx2); margin-bottom:14px; }
+.about-txt strong { color:var(--forest); }
+.crop-row { margin-top:6px; }
+.crop-lbl { font-size:.63rem; color:var(--tx3); text-transform:uppercase; letter-spacing:.08em; margin:14px 0 5px; font-weight:600; }
+.crop-pills { display:flex; flex-wrap:wrap; gap:6px; }
+.pill { display:inline-block; padding:4px 12px; border-radius:20px; font-size:.72rem; font-weight:500; }
+.pill-k { background:#dff2e6; color:#1a6630; border:1px solid #b8dfc4; }
+.pill-r { background:#fff0d6; color:#7a4e00; border:1px solid #e8cc90; }
+.about-note {
+  font-size:.74rem; color:var(--tx3); font-style:italic;
+  border-left:3px solid var(--amber); padding-left:12px; margin-top:18px; line-height:1.7;
+}
+.about-img { position:relative; }
+.about-img img { width:100%; height:440px; object-fit:cover; border-radius:16px; box-shadow:0 20px 56px rgba(13,51,24,.2); }
+.about-badge {
+  position:absolute; bottom:22px; left:22px;
+  background:var(--forest); color:#fff;
+  padding:12px 18px; border-radius:10px;
+  font-size:.77rem; line-height:1.55;
+  box-shadow:0 6px 20px rgba(0,0,0,.28);
+}
+.about-badge strong { display:block; font-size:1.1rem; color:var(--amber); }
+
+/* ═══════════════════════════════════
+   GRID CARDS
+═══════════════════════════════════ */
+.g4 { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+.g3 { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.g2 { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.card {
+  background:var(--paper); border:1px solid var(--border); border-radius:14px;
+  padding:26px 20px; transition:all .25s; display:block;
+}
+.card:hover { transform:translateY(-5px); box-shadow:0 16px 40px rgba(13,51,24,.13); border-color:var(--light); background:var(--white); }
+.card .ico { font-size:1.7rem; margin-bottom:12px; display:block; }
+.card h3 { font-size:.88rem; font-weight:600; color:var(--forest); margin-bottom:7px; }
+.card p { font-size:.74rem; color:var(--tx3); line-height:1.62; }
+.card-center { text-align:center; }
+.card-dark {
+  background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.13);
+  border-radius:14px; padding:26px 22px; transition:all .25s; display:block;
+}
+.card-dark:hover { background:rgba(255,255,255,.14); border-color:var(--amber); transform:translateY(-4px); }
+.card-dark .code { font-family:'Playfair Display',serif; font-size:1.65rem; color:var(--amber); font-weight:700; display:block; margin-bottom:6px; }
+.card-dark h3 { color:#fff; font-size:.88rem; font-weight:600; margin-bottom:8px; }
+.card-dark p { color:rgba(255,255,255,.6); font-size:.76rem; line-height:1.62; }
+
+/* ═══════════════════════════════════
+   NEWS + SIDEBAR
+═══════════════════════════════════ */
+.ne { display:grid; grid-template-columns:5fr 3fr; gap:36px; }
+.news-list li { display:flex; align-items:flex-start; gap:14px; padding:14px 0; border-bottom:1px solid var(--border); }
+.news-list li:last-child { border-bottom:none; }
+.ndate { background:var(--forest); color:#fff; border-radius:8px; padding:7px 10px; text-align:center; min-width:44px; flex-shrink:0; }
+.ndate .d { font-size:1rem; font-weight:700; display:block; }
+.ndate .m { font-size:.56rem; text-transform:uppercase; opacity:.72; }
+.news-list a { font-size:.84rem; font-weight:500; line-height:1.55; display:flex; align-items:center; gap:7px; flex-wrap:wrap; color:var(--tx1); }
+.news-list a:hover { color:var(--green); }
+.nbadge { background:#dff2e6; color:var(--green); font-size:.57rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:2px 7px; border-radius:8px; white-space:nowrap; }
+.side-box { background:var(--white); border:1px solid var(--border); border-radius:14px; padding:22px; margin-bottom:18px; }
+.side-box h3 { font-family:'Playfair Display',serif; font-size:1rem; color:var(--forest); margin-bottom:14px; padding-bottom:10px; border-bottom:2px solid var(--light); }
+.side-item { display:flex; gap:11px; margin-bottom:13px; align-items:flex-start; }
+.side-dot { width:8px; height:8px; border-radius:50%; background:var(--amber); margin-top:5px; flex-shrink:0; }
+.side-item h4 { font-size:.81rem; font-weight:600; color:var(--tx1); }
+.side-item h4 a { color:var(--forest); }
+.side-item h4 a:hover { color:var(--green); }
+.side-item p { font-size:.71rem; color:var(--tx3); margin-top:2px; }
+
+/* ═══════════════════════════════════
+   GALLERY
+═══════════════════════════════════ */
+.gal {
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  grid-template-rows:210px 210px;
+  gap:10px;
+}
+.gi { border-radius:10px; overflow:hidden; position:relative; background:var(--green); }
+.gi:first-child { grid-row:1/3; }
+.gi img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .45s; }
+.gi:hover img { transform:scale(1.06); }
+.gi .ov { position:absolute; inset:0; background:rgba(13,51,24,.55); display:flex; align-items:center; justify-content:center; opacity:0; transition:.3s; font-size:1.5rem; color:#fff; }
+.gi:hover .ov { opacity:1; }
+
+/* ═══════════════════════════════════
+   FARMERS CORNER
+═══════════════════════════════════ */
+.fc { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.fc-card { background:var(--white); border:1px solid var(--border); border-radius:12px; padding:22px 16px; text-align:center; transition:all .22s; display:block; }
+.fc-card:hover { border-color:var(--amber); transform:translateY(-4px); box-shadow:0 12px 32px rgba(13,51,24,.1); }
+.fc-card .ico { font-size:1.8rem; display:block; margin-bottom:10px; }
+.fc-card h3 { font-size:.84rem; font-weight:600; color:var(--forest); margin-bottom:5px; }
+.fc-card p { font-size:.72rem; color:var(--tx3); line-height:1.56; }
+
+/* ═══════════════════════════════════
+   IMPORTANT LINKS
+═══════════════════════════════════ */
+.imp-links { background:var(--white); padding:40px 40px; border-top:1px solid var(--border); }
+.imp-links h3 { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--forest); margin-bottom:18px; display:flex; align-items:center; gap:12px; }
+.imp-links h3::after { content:''; flex:1; height:1px; background:var(--border); }
+.lnks { display:flex; flex-wrap:wrap; gap:9px; }
+.lnk { display:inline-block; background:var(--cream); border:1px solid var(--border); color:var(--forest); font-size:.75rem; font-weight:500; padding:7px 14px; border-radius:7px; transition:all .18s; }
+.lnk:hover { background:var(--forest); color:#fff; border-color:var(--forest); }
+
+/* ═══════════════════════════════════
+   FOOTER
+═══════════════════════════════════ */
+.site-footer { background:#0b2612; color:rgba(255,255,255,.7); padding:50px 40px 22px; }
+.foot { display:grid; grid-template-columns:2.2fr 1fr 1fr 1fr; gap:36px; margin-bottom:36px; }
+.foot-logo { height:52px; object-fit:contain; filter:brightness(0) invert(1); display:block; margin-bottom:14px; }
+.foot-brand p { font-size:.77rem; line-height:1.78; opacity:.7; margin-bottom:14px; }
+.foot-brand address { font-style:normal; font-size:.74rem; line-height:1.72; opacity:.62; }
+.site-footer h4 { font-size:.72rem; font-weight:700; color:#fff; text-transform:uppercase; letter-spacing:.09em; margin-bottom:14px; padding-bottom:9px; border-bottom:1px solid rgba(255,255,255,.1); }
+.site-footer ul li { margin-bottom:7px; }
+.site-footer ul a { color:rgba(255,255,255,.6); font-size:.76rem; transition:color .17s; }
+.site-footer ul a:hover { color:var(--amber); }
+.foot-bottom { border-top:1px solid rgba(255,255,255,.08); padding-top:18px; display:flex; justify-content:space-between; align-items:center; font-size:.7rem; opacity:.5; flex-wrap:wrap; gap:8px; }
+.more { display:inline-block; margin-top:16px; color:var(--light); font-size:.8rem; font-weight:600; }
+.more:hover { color:#fff; }
+.dark-more { color:var(--amber); }
+.dark-more:hover { color:#fff; }
+
+/* ═══════════════════════════════════
+   UTILITY
+═══════════════════════════════════ */
+.tc { text-align:center; }
+.mt6 { margin-top:24px; }
+.mt8 { margin-top:32px; }
+.btn-green { display:inline-block; background:var(--forest); color:#fff; padding:11px 28px; border-radius:7px; font-size:.82rem; font-weight:600; transition:all .2s; }
+.btn-green:hover { background:var(--green); transform:translateY(-2px); }
+.btn-ol { display:inline-block; border:1.5px solid var(--forest); color:var(--forest); padding:10px 26px; border-radius:7px; font-size:.82rem; font-weight:600; margin-left:12px; transition:all .2s; }
+.btn-ol:hover { background:var(--forest); color:#fff; }
+
+/* ═══════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════ */
+@media(max-width:1100px) {
+  .g4 { grid-template-columns:repeat(2,1fr); }
+  .about-wrap { grid-template-columns:1fr; gap:36px; }
+  .about-img img { height:300px; }
+  .ne { grid-template-columns:1fr; }
+  .foot { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:768px) {
+  .topstrip { padding:5px 18px; font-size:.63rem; }
+  .site-header { padding:0 18px; }
+  .main-nav { display:none; }
+  .main-nav.open {
+    display:flex; flex-direction:column; align-items:flex-start;
+    position:fixed; inset:0; background:var(--white); z-index:998;
+    padding:80px 24px 24px; overflow-y:auto; gap:0;
+  }
+  .ni { width:100%; border-bottom:1px solid var(--border); }
+  .ni > a,.ni > button { min-height:44px; width:100%; padding:0 14px; font-size:.88rem; }
+  .ni .dd { position:static; box-shadow:none; border:none; display:none !important; }
+  .ni.open .dd { display:block !important; }
+  .burger { display:flex; }
+  .hero { height:380px; }
+  .slide-fade { padding:0 28px; }
+  .slide-content h2 { font-size:1.6rem; }
+  .sec { padding:44px 18px; }
+  .stats { padding:16px 18px; gap:20px; }
+  .stat:not(:last-child)::after { display:none; }
+  .quick { padding:10px 18px; }
+  .g3 { grid-template-columns:1fr; }
+  .g4 { grid-template-columns:1fr; }
+  .gal { grid-template-columns:1fr 1fr; grid-template-rows:160px 160px; }
+  .gal .gi:first-child { grid-column:1/3; grid-row:1; }
+  .fc { grid-template-columns:1fr 1fr; }
+  .foot { grid-template-columns:1fr; }
+  .imp-links { padding:36px 18px; }
+  .site-footer { padding:40px 18px 18px; }
+}
+@media(max-width:480px) {
+  .slide-content h2 { font-size:1.3rem; }
+  .fc { grid-template-columns:1fr; }
+  .g2 { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     TOP STRIP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div class="topstrip">
+  <span>📍 Govt. Agriculture Farm, Rura Mallu, PO Shahjadpura, Distt. Jalaun (UP) – 285 001</span>
+  <div>
+    <a href="recruitment.html">🔴 Recruitment / Tenders</a>
+    <a href="kisan-helpline.html">Kisan Helpline</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     HEADER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<header class="site-header">
+  <a href="index.html" class="brand">
+    <img src="https://jalaun.kvk4.in/img/logo.png" alt="KVK Jalaun Logo" class="brand-logo"
+         onerror="this.outerHTML='<div style=\'width:64px;height:64px;background:var(--forest);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:#fff;flex-shrink:0\'>🌾</div>'">
+    <div class="brand-text">
+      <h1>Krishi Vigyan Kendra, Jalaun</h1>
+      <span class="sub">ICAR &middot; BUAT Banda</span>
+      <span class="loc">Jhansi Division &middot; Uttar Pradesh &middot; PIN 285 001</span>
+    </div>
+  </a>
+
+  <button class="burger" id="burger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav class="main-nav" id="nav">
+    <div class="ni curr"><a href="index.html">Home</a></div>
+
+    <div class="ni">
+      <button>About ▾</button>
+      <div class="dd">
+        <a href="about.html">About KVK Jalaun</a>
+        <a href="faculty.html">Faculty &amp; Staff</a>
+        <a href="mandate.html">Mandate</a>
+        <a href="district-profile.html">District Profile</a>
+        <a href="infrastructure.html">Infrastructure &amp; Facilities</a>
+        <a href="awards.html">Awards &amp; Recognitions</a>
+        <a href="vision.html">Vision</a>
+        <a href="impact.html">Impact of KVK</a>
+      </div>
+    </div>
+
+    <div class="ni">
+      <button>Activities ▾</button>
+      <div class="dd">
+        <a href="training.html">Training Programmes</a>
+        <a href="fld.html">Front Line Demos (FLDs)</a>
+        <a href="oft.html">On Farm Trials (OFTs)</a>
+        <a href="extension.html">Extension Activities</a>
+        <a href="success-stories.html">Success Stories</a>
+        <a href="activities.html">All Activities &amp; News</a>
+      </div>
+    </div>
+
+    <div class="ni">
+      <button>ICAR Schemes ▾</button>
+      <div class="dd">
+        <a href="nfsm.html">NFSM</a>
+        <a href="nmoop.html">NMOOP</a>
+        <a href="ppvfra.html">PPVFRA</a>
+        <a href="oft.html">OFTs</a>
+        <a href="fld.html">FLDs</a>
+        <a href="skill-development.html">Skill Development</a>
+      </div>
+    </div>
+
+    <div class="ni">
+      <button>Farmers ▾</button>
+      <div class="dd">
+        <a href="advisory.html">Advisory Services</a>
+        <a href="agro-advisory.html">Agro Advisory</a>
+        <a href="kisan-helpline.html">Kisan Helpline</a>
+        <a href="weather.html">Weather</a>
+        <a href="msp.html">MSP Rates</a>
+        <a href="progressive-farmers.html">Progressive Farmers</a>
+        <a href="contingency-plan.html">Contingency Plan</a>
+      </div>
+    </div>
+
+    <div class="ni">
+      <button>Publications ▾</button>
+      <div class="dd">
+        <a href="booklets.html">Booklets</a>
+        <a href="leaflets.html">Leaflets</a>
+        <a href="research-papers.html">Research Papers</a>
+        <a href="newspapers.html">News Coverage</a>
+      </div>
+    </div>
+
+    <div class="ni">
+      <button>Reports ▾</button>
+      <div class="dd">
+        <a href="reports.html">Annual Progress Report</a>
+        <a href="reports.html">Quarterly Reports (QPR)</a>
+        <a href="reports.html">Monthly Reports (MPR)</a>
+        <a href="reports.html">QRT Reports</a>
+        <a href="annual-action-plan.html">Annual Action Plan</a>
+        <a href="contingency-plan.html">Contingency Plan</a>
+      </div>
+    </div>
+
+    <div class="ni">
+      <button>Gallery ▾</button>
+      <div class="dd">
+        <a href="gallery.html">Photo Gallery</a>
+        <a href="video-gallery.html">Video Gallery</a>
+      </div>
+    </div>
+
+    <div class="ni"><a href="contact.html" class="nav-cta">Contact Us</a></div>
+  </nav>
+</header>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     NEWS TICKER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div class="ticker">
+  <div class="ticker-label">📢 Latest</div>
+  <div class="ticker-body">
+    <div class="ticker-inner">
+      <span><a href="activities.html">Off campus Training programme at Village Khajuri</a></span>
+      <span><a href="recruitment.html">Auction Letter — KVK Jalaun</a></span>
+      <span><a href="activities.html">Kisan Mela Brochure — Download Now</a></span>
+      <span><a href="activities.html">Dr Vister Joshi on Agri Start-up at Doordarshan Kisan — 22 Sep 2023</a></span>
+      <span><a href="activities.html">Seed distribution under CFLD (Oilseeds)</a></span>
+      <!-- duplicate for seamless loop -->
+      <span><a href="activities.html">Off campus Training programme at Village Khajuri</a></span>
+      <span><a href="recruitment.html">Auction Letter — KVK Jalaun</a></span>
+      <span><a href="activities.html">Kisan Mela Brochure — Download Now</a></span>
+      <span><a href="activities.html">Dr Vister Joshi on Agri Start-up at Doordarshan Kisan — 22 Sep 2023</a></span>
+      <span><a href="activities.html">Seed distribution under CFLD (Oilseeds)</a></span>
+    </div>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     HERO SLIDER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div class="hero">
+  <div class="slides" id="slides">
+
+    <div class="slide">
+      <img src="https://cms.kvk4.in/assets/uploads/1742454902.slider1jalaun.jpg" alt="KVK Jalaun Field Activity">
+      <div class="slide-fade">
+        <div class="slide-content">
+          <span class="slide-tag">Empowering Farmers Since 2005</span>
+          <h2>Krishi Vigyan Kendra, Jalaun</h2>
+          <p>Bridging agricultural research and farmers across 9 development blocks, 564 gram panchayats and 942 revenue villages of Jalaun district, Uttar Pradesh.</p>
+          <a href="about.html" class="btn-gold">About KVK</a>
+          <a href="advisory.html" class="btn-ghost">Get Advisory</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="https://cms.kvk4.in/assets/uploads/1742454933.slider2jalaun.jpg" alt="Training Programme">
+      <div class="slide-fade">
+        <div class="slide-content">
+          <span class="slide-tag">Training &amp; Capacity Building</span>
+          <h2>Skill Development for Rural Communities</h2>
+          <p>Hands-on training for farmers, farm women and rural youth in improved crop production, livestock care, organic farming and agri-entrepreneurship.</p>
+          <a href="training.html" class="btn-gold">Training Programmes</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="https://cms.kvk4.in/assets/uploads/1742454949.slider3jalaun.jpg" alt="Front Line Demonstration">
+      <div class="slide-fade">
+        <div class="slide-content">
+          <span class="slide-tag">Front Line Demonstrations</span>
+          <h2>Technology on Farmers' Own Fields</h2>
+          <p>Demonstrating improved varieties of wheat, gram, mustard, sesamum, urd and pigeon pea directly on farmers' land across all 9 development blocks.</p>
+          <a href="fld.html" class="btn-gold">View FLDs</a>
+          <a href="oft.html" class="btn-ghost">On Farm Trials</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="https://cms.kvk4.in/assets/uploads/1742455027.slider4jalaun.jpg" alt="Kisan Mela">
+      <div class="slide-fade">
+        <div class="slide-content">
+          <span class="slide-tag">Extension &amp; Outreach</span>
+          <h2>Kisan Mela &amp; Field Days</h2>
+          <p>Annual farmer fairs, exhibitions and field days bringing together farmers and scientists to accelerate technology adoption across Jalaun district.</p>
+          <a href="extension.html" class="btn-gold">Extension Activities</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="https://cms.kvk4.in/assets/uploads/1742454877.slider78jalaun.jpg" alt="Farm Activity">
+      <div class="slide-fade">
+        <div class="slide-content">
+          <span class="slide-tag">Sustainable Agriculture</span>
+          <h2>Organic Farming &amp; Seed Production</h2>
+          <p>KVK Jalaun actively promotes organic farming, seed production, spice and flower cultivation, vegetable growing and fruit production in the district.</p>
+          <a href="success-stories.html" class="btn-gold">Success Stories</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="https://cms.kvk4.in/assets/uploads/1742454852.slider6jalaun.jpg" alt="Advisory Services">
+      <div class="slide-fade">
+        <div class="slide-content">
+          <span class="slide-tag">Farm Advisory</span>
+          <h2>Expert Advice at Your Doorstep</h2>
+          <p>Location-specific crop advisories, pest management guidance and weather-based farm planning for Jalaun's unique agro-climatic conditions.</p>
+          <a href="advisory.html" class="btn-gold">Advisory Services</a>
+          <a href="kisan-helpline.html" class="btn-ghost">Kisan Helpline</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="https://cms.kvk4.in/assets/uploads/1742454806.slider7jalaun.jpg" alt="Research Activity">
+      <div class="slide-fade">
+        <div class="slide-content">
+          <span class="slide-tag">On Farm Research</span>
+          <h2>Research Meets Reality</h2>
+          <p>On-Farm Trials validating improved technologies under real soil and management conditions — guiding location-specific recommendations for Jalaun farmers.</p>
+          <a href="oft.html" class="btn-gold">OFT Results</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="https://cms.kvk4.in/assets/uploads/1752662216.Dr. Maroof DD.jpeg" alt="KVK Director">
+      <div class="slide-fade">
+        <div class="slide-content">
+          <span class="slide-tag">Leadership</span>
+          <h2>Committed to Agricultural Development</h2>
+          <p>Under dedicated scientific leadership, KVK Jalaun continues its mission of technology transfer, capacity building and farm advisory for sustainable development of Jalaun district.</p>
+          <a href="faculty.html" class="btn-gold">Meet Our Team</a>
+          <a href="about.html" class="btn-ghost">About KVK</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <button class="arrow prev" onclick="go(-1)" aria-label="Previous">&#8592;</button>
+  <button class="arrow next" onclick="go(1)" aria-label="Next">&#8594;</button>
+  <div class="dots" id="dots"></div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     STATS BAND
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div class="stats">
+  <div class="stat"><span class="n">4.56 L ha</span><span class="l">Geographical Area</span></div>
+  <div class="stat"><span class="n">3.451 L ha</span><span class="l">Net Cultivated Area</span></div>
+  <div class="stat"><span class="n">1.035 L ha</span><span class="l">Irrigated Area</span></div>
+  <div class="stat"><span class="n">564</span><span class="l">Gram Panchayats</span></div>
+  <div class="stat"><span class="n">942</span><span class="l">Revenue Villages</span></div>
+  <div class="stat"><span class="n">9</span><span class="l">Development Blocks</span></div>
+  <div class="stat"><span class="n">2005</span><span class="l">Established</span></div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     QUICK ACCESS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div class="quick">
+  <span class="quick-lbl">Quick Access</span>
+  <a href="advisory.html" class="qp hot">📋 Agro Advisory</a>
+  <a href="kisan-helpline.html" class="qp">📞 Kisan Helpline</a>
+  <a href="weather.html" class="qp">🌦 Weather</a>
+  <a href="msp.html" class="qp">💰 MSP Rates</a>
+  <a href="training.html" class="qp">🎓 Training</a>
+  <a href="contingency-plan.html" class="qp">🛡 Contingency Plan</a>
+  <a href="annual-action-plan.html" class="qp">📅 Action Plan</a>
+  <a href="recruitment.html" class="qp">📄 Recruitment / Tenders</a>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     ABOUT KVK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="sec">
+  <div class="sh">
+    <div class="sh-bar"></div>
+    <div>
+      <h2>About KVK Jalaun</h2>
+      <p>Govt. Agriculture Farm, Rura Mallu, PO Shahjadpura, Jalaun — ICAR &middot; BUAT Banda</p>
+    </div>
+  </div>
+  <div class="about-wrap">
+    <div class="about-txt">
+      <p>Krishi Vigyan Kendra, Rura Mallu, Jalaun has been performing a considerable and commendable job of rural development in district Jalaun since its very inception in <strong>2005</strong> — through multifarious activities like Training, Demonstration, On Farm Testing (OFTs) and Farm Advisory Services.</p>
+
+      <p>Jalaun district falls in <strong>Jhansi Division</strong> and is one of the 75 districts of Uttar Pradesh. The northern boundary is naturally demarcated by river <strong>Yamuna</strong>, while the western boundary adjoins <strong>Madhya Pradesh</strong>. The district is divided into <strong>5 Tehsils</strong> — Orai, Jalaun, Kalpi, Madhogarh and Konch — and <strong>9 Development Blocks</strong>: Rampura, Kuthond, Madhogarh, Konch, Jalaun, Nadigaon, Dakore, Mahewa and Kadaura.</p>
+
+      <p>KVK Jalaun actively contributes in organic farming, sustainable crop production, seed production, flower cultivation, spice cultivation, vegetable cultivation, fruit production and allied areas. It has established strong collaboration with line departments — State Agriculture, DRDA, Horticulture and others.</p>
+
+      <div class="crop-row">
+        <div class="crop-lbl">🌧 Kharif Crops</div>
+        <div class="crop-pills">
+          <span class="pill pill-k">Sesamum</span>
+          <span class="pill pill-k">Urd</span>
+          <span class="pill pill-k">Sorghum</span>
+          <span class="pill pill-k">Bajra</span>
+          <span class="pill pill-k">Pigeon Pea</span>
+          <span class="pill pill-k">Moong</span>
+        </div>
+        <div class="crop-lbl">❄️ Rabi Crops</div>
+        <div class="crop-pills">
+          <span class="pill pill-r">Wheat</span>
+          <span class="pill pill-r">Gram</span>
+          <span class="pill pill-r">Field Pea</span>
+          <span class="pill pill-r">Lentil</span>
+          <span class="pill pill-r">Toria</span>
+          <span class="pill pill-r">Mustard</span>
+        </div>
+        <div class="crop-lbl">🌱 Zaid Crops</div>
+        <div class="crop-pills">
+          <span class="pill pill-k">Urd (Veg.)</span>
+          <span class="pill pill-k">Moong (Veg.)</span>
+        </div>
+      </div>
+      <p class="about-note">Cropping Intensity: 115% &nbsp;·&nbsp; 564 Gram Panchayats &nbsp;·&nbsp; 942 Revenue Villages &nbsp;·&nbsp; 5 Tehsils &nbsp;·&nbsp; 9 Development Blocks &nbsp;·&nbsp; Geographical Area: 4.56 lakh ha</p>
+      <a href="about.html" class="more mt6" style="color:var(--green)">Read more about KVK Jalaun →</a>
+    </div>
+    <div class="about-img">
+      <img src="https://cms.kvk4.in/assets/uploads/1742454852.slider6jalaun.jpg" alt="KVK Jalaun farm activity">
+      <div class="about-badge">
+        <strong>Est. 2005</strong>
+        Rura Mallu, Jalaun (UP)
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     SERVICES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="sec sec-white">
+  <div class="sh">
+    <div class="sh-bar"></div>
+    <div>
+      <h2>Programmes &amp; Services</h2>
+      <p>Core mandate activities of KVK Jalaun for agricultural development</p>
+    </div>
+  </div>
+  <div class="g4">
+    <a href="training.html" class="card card-center"><span class="ico">🎓</span><h3>Training Programmes</h3><p>Skill-building for farmers, farm women and rural youth in modern farming techniques</p></a>
+    <a href="fld.html" class="card card-center"><span class="ico">🌱</span><h3>Front Line Demonstrations</h3><p>Improved varieties demonstrated on farmers' fields to bridge the yield gap</p></a>
+    <a href="oft.html" class="card card-center"><span class="ico">🔬</span><h3>On Farm Trials</h3><p>Technology validation under real farming conditions before wide-scale recommendation</p></a>
+    <a href="advisory.html" class="card card-center"><span class="ico">📋</span><h3>Advisory Services</h3><p>Season and crop-specific farm advisories for Jalaun's unique agro-climate</p></a>
+    <a href="extension.html" class="card card-center"><span class="ico">🤝</span><h3>Extension Activities</h3><p>Kisan melas, field days and farmer-scientist interactions across the district</p></a>
+    <a href="success-stories.html" class="card card-center"><span class="ico">🏆</span><h3>Success Stories</h3><p>Documented transformation of farmers through KVK Jalaun programmes</p></a>
+    <a href="booklets.html" class="card card-center"><span class="ico">📚</span><h3>Publications</h3><p>Booklets, leaflets and research papers in farmer-friendly language</p></a>
+    <a href="impact.html" class="card card-center"><span class="ico">📈</span><h3>Impact of KVK</h3><p>Technology spread and measurable impact across Jalaun's farming communities</p></a>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     NEWS + KEY RESOURCES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="sec sec-cream">
+  <div class="sh">
+    <div class="sh-bar"></div>
+    <div>
+      <h2>Recent News &amp; Updates</h2>
+      <p>Latest activities and announcements from KVK Jalaun</p>
+    </div>
+  </div>
+  <div class="ne">
+    <div>
+      <ul class="news-list">
+        <li>
+          <div class="ndate"><span class="d">—</span><span class="m">New</span></div>
+          <a href="activities.html">Off campus Training programme at Village Khajuri <span class="nbadge">New</span></a>
+        </li>
+        <li>
+          <div class="ndate"><span class="d">—</span><span class="m">New</span></div>
+          <a href="recruitment.html">Auction Letter — KVK Jalaun <span class="nbadge">New</span></a>
+        </li>
+        <li>
+          <div class="ndate"><span class="d">—</span><span class="m">New</span></div>
+          <a href="activities.html">Kisan Mela Brochure available for download <span class="nbadge">New</span></a>
+        </li>
+        <li>
+          <div class="ndate"><span class="d">22</span><span class="m">Sep 23</span></div>
+          <a href="activities.html">Dr Vister Joshi from KVK Jalaun on Agri Start-up at Doordarshan Kisan</a>
+        </li>
+        <li>
+          <div class="ndate"><span class="d">—</span><span class="m">New</span></div>
+          <a href="activities.html">Seed distribution under CFLD (Oilseeds) <span class="nbadge">New</span></a>
+        </li>
+      </ul>
+      <a href="activities.html" class="more" style="color:var(--green)">See all news and activities →</a>
+    </div>
+
+    <div>
+      <div class="side-box">
+        <h3>📌 Key Resources</h3>
+        <div class="side-item"><div class="side-dot"></div><div><h4><a href="contingency-plan.html">Contingency Plan</a></h4><p>District crop contingency plan for aberrant weather conditions</p></div></div>
+        <div class="side-item"><div class="side-dot"></div><div><h4><a href="annual-action-plan.html">Annual Action Plan</a></h4><p>KVK Jalaun's yearly programme roadmap</p></div></div>
+        <div class="side-item"><div class="side-dot"></div><div><h4><a href="reports.html">Progress Reports</a></h4><p>APR, QPR, MPR and QRT reports</p></div></div>
+        <div class="side-item"><div class="side-dot"></div><div><h4><a href="recruitment.html">Recruitment / Tenders</a></h4><p>Latest recruitment and auction notices</p></div></div>
+        <div class="side-item"><div class="side-dot"></div><div><h4><a href="impact.html">Impact of KVK</a></h4><p>Documented technology spread and impact across Jalaun</p></div></div>
+      </div>
+      <div class="side-box" style="background:var(--forest);border-color:var(--forest)">
+        <h3 style="color:#fff;border-color:rgba(255,255,255,.2)">📞 Kisan Helpline</h3>
+        <p style="color:rgba(255,255,255,.78);font-size:.8rem;line-height:1.65;margin-bottom:12px">Have a farming problem? Call the toll-free Kisan helpline for expert agricultural guidance.</p>
+        <div style="font-size:1.3rem;font-weight:700;color:var(--amber)">1800-180-1551</div>
+        <div style="font-size:.68rem;color:rgba(255,255,255,.55);margin-top:4px">Toll Free &nbsp;·&nbsp; Mon – Sat</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     ICAR SCHEMES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="sec sec-dark">
+  <div class="sh">
+    <div class="sh-bar"></div>
+    <div>
+      <h2>ICAR Projects &amp; Schemes</h2>
+      <p>National programmes implemented by KVK Jalaun for district farmers</p>
+    </div>
+  </div>
+  <div class="g3">
+    <a href="nfsm.html" class="card-dark">
+      <span class="code">NFSM</span>
+      <h3>National Food Security Mission</h3>
+      <p>Boosting production of wheat, pulses and coarse cereals through improved agronomic practices and quality inputs across Jalaun district.</p>
+    </a>
+    <a href="nmoop.html" class="card-dark">
+      <span class="code">NMOOP</span>
+      <h3>National Mission on Oilseeds &amp; Oil Palm</h3>
+      <p>Expanding sesamum and mustard cultivation — major Kharif and Rabi oilseed crops — to strengthen edible oil production in the district.</p>
+    </a>
+    <a href="ppvfra.html" class="card-dark">
+      <span class="code">PPVFRA</span>
+      <h3>Plant Variety Protection</h3>
+      <p>Protecting farmers' rights and encouraging conservation of locally-adapted and traditional plant varieties in Jalaun district.</p>
+    </a>
+    <a href="oft.html" class="card-dark">
+      <span class="code">OFTs</span>
+      <h3>On Farm Trials</h3>
+      <p>Technology validation under actual farming conditions across Jalaun's 9 development blocks to guide location-specific recommendations.</p>
+    </a>
+    <a href="fld.html" class="card-dark">
+      <span class="code">FLDs</span>
+      <h3>Front Line Demonstrations</h3>
+      <p>Large-scale demonstrations on farmers' fields bridging the yield gap between research potential and actual farm productivity.</p>
+    </a>
+    <a href="skill-development.html" class="card-dark">
+      <span class="code">SKD</span>
+      <h3>Skill Development</h3>
+      <p>Vocational training for rural youth in agri-enterprise, food processing, mushroom cultivation, vermi-composting and allied occupations.</p>
+    </a>
+  </div>
+  <a href="activities.html" class="more dark-more">View all programmes and activities →</a>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     PHOTO GALLERY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="sec sec-white">
+  <div class="sh">
+    <div class="sh-bar"></div>
+    <div>
+      <h2>Photo Gallery</h2>
+      <p>From the fields and training grounds of KVK Jalaun</p>
+    </div>
+  </div>
+  <div class="gal">
+    <div class="gi">
+      <img src="https://cms.kvk4.in/assets/uploads/1742454806.slider7jalaun.jpg" alt="KVK Jalaun Activity">
+      <div class="ov">🔍</div>
+    </div>
+    <div class="gi">
+      <img src="https://cms.kvk4.in/assets/uploads/1742454877.slider78jalaun.jpg" alt="Farm Activity">
+      <div class="ov">🔍</div>
+    </div>
+    <div class="gi">
+      <img src="https://cms.kvk4.in/assets/uploads/1742454933.slider2jalaun.jpg" alt="Training">
+      <div class="ov">🔍</div>
+    </div>
+    <div class="gi">
+      <img src="https://cms.kvk4.in/assets/uploads/1742454949.slider3jalaun.jpg" alt="Field Demo">
+      <div class="ov">🔍</div>
+    </div>
+    <div class="gi">
+      <img src="https://cms.kvk4.in/assets/uploads/1742455027.slider4jalaun.jpg" alt="Kisan Mela">
+      <div class="ov">🔍</div>
+    </div>
+  </div>
+  <div class="tc mt8">
+    <a href="gallery.html" class="btn-green">View Full Photo Gallery</a>
+    <a href="video-gallery.html" class="btn-ol">Video Gallery</a>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     FARMERS CORNER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="sec sec-cream">
+  <div class="sh">
+    <div class="sh-bar"></div>
+    <div>
+      <h2>Farmers' Corner</h2>
+      <p>Information, tools and resources designed for the farmers of Jalaun district</p>
+    </div>
+  </div>
+  <div class="fc">
+    <a href="agro-advisory.html" class="fc-card"><span class="ico">🌿</span><h3>Agro Advisory</h3><p>Crop advisories tailored to Jalaun's agro-climatic conditions</p></a>
+    <a href="kisan-helpline.html" class="fc-card"><span class="ico">📞</span><h3>Kisan Call Centre</h3><p>Toll-free expert guidance on any farming problem</p></a>
+    <a href="weather.html" class="fc-card"><span class="ico">🌦</span><h3>Weather</h3><p>District weather updates for sowing, harvesting and irrigation planning</p></a>
+    <a href="msp.html" class="fc-card"><span class="ico">💰</span><h3>MSP Rates</h3><p>Minimum Support Prices for all major Kharif and Rabi crops</p></a>
+    <a href="progressive-farmers.html" class="fc-card"><span class="ico">🥇</span><h3>Progressive Farmers</h3><p>Inspiring stories of innovating farmers across Jalaun district</p></a>
+    <a href="success-stories.html" class="fc-card"><span class="ico">🌟</span><h3>Success Stories</h3><p>Documented KVK Jalaun impact and farmer testimonials</p></a>
+    <a href="contingency-plan.html" class="fc-card"><span class="ico">🛡</span><h3>Contingency Plan</h3><p>Alternate crop strategies for drought or delayed monsoon conditions</p></a>
+    <a href="farmers-corner.html" class="fc-card"><span class="ico">🧑‍🌾</span><h3>Farmers' Corner</h3><p>All farmer resources in one convenient place</p></a>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     IMPORTANT LINKS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div class="imp-links">
+  <h3>Important Links</h3>
+  <div class="lnks">
+    <a href="http://icar.org.in/" target="_blank" rel="noopener" class="lnk">ICAR</a>
+    <a href="http://farmer.gov.in/" target="_blank" rel="noopener" class="lnk">Farmer Portal</a>
+    <a href="http://ecourses.iasri.res.in/" target="_blank" rel="noopener" class="lnk">ICAR E-Courses</a>
+    <a href="http://fao.org/" target="_blank" rel="noopener" class="lnk">FAO</a>
+    <a href="http://ugc.ac.in/" target="_blank" rel="noopener" class="lnk">UGC</a>
+    <a href="http://bausabour.com/" target="_blank" rel="noopener" class="lnk">Bihar Agricultural University, Sabour</a>
+    <a href="http://pusauniversity.org.in/" target="_blank" rel="noopener" class="lnk">Rajendra Agricultural University, Pusa</a>
+    <a href="http://kisangyan.com/" target="_blank" rel="noopener" class="lnk">Kisan Gyan</a>
+    <a href="http://youtube.com/bausabour/" target="_blank" rel="noopener" class="lnk">BAU on YouTube</a>
+    <a href="https://atarik.res.in/login.php" target="_blank" rel="noopener" class="lnk">MPR / QPR Portal</a>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     FOOTER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<footer class="site-footer">
+  <div class="foot">
+    <div class="foot-brand">
+      <img src="https://jalaun.kvk4.in/img/logo.png" alt="KVK Jalaun" class="foot-logo"
+           onerror="this.outerHTML='<div style=\'font-size:2rem;margin-bottom:14px\'>🌾</div>'">
+      <p>Krishi Vigyan Kendra, Jalaun is a farm science centre of ICAR under Banda University of Agriculture &amp; Technology (BUAT), Banda. Since its establishment in 2005, KVK Jalaun has been serving the farming communities of Jalaun district through training, demonstrations, on-farm trials and advisory services.</p>
+      <address>
+        Govt. Agriculture Farm, Rura Mallu<br>
+        PO. Shahjadpura, Distt. Jalaun<br>
+        Uttar Pradesh – 285 001, India<br>
+        Jhansi Division
+      </address>
+    </div>
+    <div>
+      <h4>About KVK</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="faculty.html">Faculty &amp; Staff</a></li>
+        <li><a href="mandate.html">Mandate</a></li>
+        <li><a href="district-profile.html">District Profile</a></li>
+        <li><a href="infrastructure.html">Infrastructure</a></li>
+        <li><a href="awards.html">Awards</a></li>
+        <li><a href="impact.html">Impact of KVK</a></li>
+        <li><a href="vision.html">Vision</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Programmes</h4>
+      <ul>
+        <li><a href="training.html">Training</a></li>
+        <li><a href="fld.html">Front Line Demos</a></li>
+        <li><a href="oft.html">On Farm Trials</a></li>
+        <li><a href="nfsm.html">NFSM</a></li>
+        <li><a href="nmoop.html">NMOOP</a></li>
+        <li><a href="ppvfra.html">PPVFRA</a></li>
+        <li><a href="extension.html">Extension Activities</a></li>
+        <li><a href="success-stories.html">Success Stories</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Farmers &amp; Reports</h4>
+      <ul>
+        <li><a href="advisory.html">Agro Advisory</a></li>
+        <li><a href="kisan-helpline.html">Kisan Helpline</a></li>
+        <li><a href="msp.html">MSP Rates</a></li>
+        <li><a href="contingency-plan.html">Contingency Plan</a></li>
+        <li><a href="annual-action-plan.html">Annual Action Plan</a></li>
+        <li><a href="reports.html">Progress Reports</a></li>
+        <li><a href="recruitment.html">Recruitment / Tenders</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2025 Krishi Vigyan Kendra, Jalaun &nbsp;·&nbsp; ICAR &nbsp;·&nbsp; BUAT Banda &nbsp;·&nbsp; All Rights Reserved</span>
+    <span>jalaun.kvk4.in</span>
+  </div>
+</footer>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     JAVASCRIPT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<script>
+/* ── SLIDER ── */
+const slides = document.getElementById('slides');
+const dotsEl = document.getElementById('dots');
+const total  = slides.querySelectorAll('.slide').length;
+let cur = 0, timer;
+
+for (let i = 0; i < total; i++) {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' on' : '');
+  d.onclick = () => goTo(i);
+  dotsEl.appendChild(d);
+}
+
+function goTo(n) {
+  cur = (n + total) % total;
+  slides.style.transform = `translateX(-${cur * 100}%)`;
+  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('on', i === cur));
+}
+function go(dir) { clearTimeout(timer); goTo(cur + dir); startAuto(); }
+function startAuto() { timer = setTimeout(() => { goTo(cur + 1); startAuto(); }, 5500); }
+startAuto();
+
+/* Touch swipe */
+let tx = 0;
+slides.addEventListener('touchstart', e => tx = e.touches[0].clientX, {passive:true});
+slides.addEventListener('touchend', e => {
+  const d = tx - e.changedTouches[0].clientX;
+  if (Math.abs(d) > 44) go(d > 0 ? 1 : -1);
+});
+
+/* ── MOBILE NAV ── */
+const burger = document.getElementById('burger');
+const nav    = document.getElementById('nav');
+burger.addEventListener('click', () => {
+  nav.classList.toggle('open');
+});
+document.addEventListener('click', e => {
+  if (!nav.contains(e.target) && !burger.contains(e.target)) nav.classList.remove('open');
+});
+/* mobile dropdown toggle */
+nav.querySelectorAll('button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (window.innerWidth <= 768) btn.closest('.ni').classList.toggle('open');
+  });
+});
+</script>
+</body>
+</html>
