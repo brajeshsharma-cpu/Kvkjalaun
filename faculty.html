@@ -1,89 +1,439 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="The dedicated scientific team of KVK Jalaun — KVK Jalaun, ICAR, BUAT Banda">
+<meta name="description" content="Faculty and Staff of KVK Jalaun">
 <title>Faculty & Staff | KVK Jalaun</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
+<style>
+body{font-family:'DM Sans',sans-serif}
+
+/* INTRO BAND */
+.fac-intro-band{background:#fff;border-bottom:1px solid #e0ead8;padding:40px 60px;display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.fac-intro-text h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:#0d3318;margin-bottom:10px}
+.fac-intro-text p{font-size:.875rem;color:#4a6441;line-height:1.75;max-width:560px}
+.fac-stats{display:flex;gap:32px;flex-wrap:wrap}
+.fac-stat{text-align:center;border-left:3px solid #d4a032;padding-left:14px}
+.fac-stat .n{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:#0d3318;line-height:1;display:block}
+.fac-stat .l{font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:#7a9670;margin-top:3px;display:block}
+
+/* SECTION */
+.fac-section{padding:56px 60px 20px}
+.fac-section.alt-bg{background:#f7f3ea}
+.fac-sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:32px}
+.fac-sec-head h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:#0d3318}
+.fac-sec-head .cnt{font-size:.62rem;font-weight:600;color:#fff;background:#0d3318;padding:3px 10px;border-radius:20px;letter-spacing:.04em}
+.fac-sec-head::after{content:'';flex:1;height:1px;background:linear-gradient(to right,#c8ddb8,transparent)}
+
+/* HEAD CARD */
+.head-card{display:grid;grid-template-columns:320px 1fr;background:#0d3318;border-radius:20px;overflow:hidden;margin-bottom:48px;box-shadow:0 24px 64px rgba(13,51,24,.25);position:relative}
+.head-card::before{content:'';position:absolute;top:0;right:0;width:300px;height:300px;background:radial-gradient(circle,rgba(212,160,50,.12) 0%,transparent 70%);pointer-events:none}
+.head-photo{width:100%;height:100%;min-height:360px;object-fit:cover;object-position:top center;display:block}
+.head-info{padding:44px 48px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1}
+.head-eyebrow{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+.badge{display:inline-block;font-size:.6rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:4px 12px;border-radius:20px}
+.badge-gold{background:#d4a032;color:#fff}
+.badge-ol{border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.8)}
+.head-name{font-family:'Cormorant Garamond',serif;font-size:2.3rem;font-weight:700;color:#fff;line-height:1.15;margin-bottom:6px}
+.head-desig{font-size:.88rem;color:#d4a032;font-weight:500;margin-bottom:4px}
+.head-spec{font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:26px}
+.head-rule{border:none;border-top:1px solid rgba(255,255,255,.12);margin-bottom:22px}
+.head-meta{display:grid;grid-template-columns:1fr 1fr;gap:14px 28px}
+.mi{display:flex;flex-direction:column;gap:2px}
+.mi .lbl{font-size:.56rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35)}
+.mi .val{font-size:.8rem;color:rgba(255,255,255,.82);line-height:1.4}
+.mi .val a{color:#d4a032;text-decoration:none}
+.mi .val a:hover{color:#f0c060}
+
+/* SCIENTIST GRID */
+.sci-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-bottom:48px}
+.sci-card{background:#fff;border:1px solid #deecd4;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(13,51,24,.05);transition:transform .28s cubic-bezier(.34,1.56,.64,1),box-shadow .28s}
+.sci-card:hover{transform:translateY(-7px);box-shadow:0 22px 52px rgba(13,51,24,.13)}
+.sci-pw{position:relative;height:240px;overflow:hidden;background:linear-gradient(160deg,#1a5c2c,#0d3318)}
+.sci-pw img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .45s}
+.sci-card:hover .sci-pw img{transform:scale(1.06)}
+.sci-tag{position:absolute;bottom:10px;left:10px;font-size:.58rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:6px;backdrop-filter:blur(8px)}
+.t-pp{background:rgba(13,51,24,.85);color:#d4a032}
+.t-hs{background:rgba(80,30,90,.85);color:#e8b0ff}
+.t-ext{background:rgba(15,50,80,.85);color:#90d0ff}
+.t-as{background:rgba(60,40,10,.85);color:#ffcc70}
+.sci-body{padding:20px 18px 22px}
+.sci-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:#0d3318;margin-bottom:3px;line-height:1.2}
+.sci-desig{font-size:.72rem;color:#b8781a;font-weight:600;margin-bottom:2px}
+.sci-spec{font-size:.68rem;color:#7a9670;margin-bottom:12px}
+.sci-rule{border:none;border-top:1px solid #e8f0e0;margin-bottom:10px}
+.sci-contacts{display:flex;flex-direction:column;gap:5px}
+.sci-row{display:flex;align-items:center;gap:7px;font-size:.7rem;color:#4a6441}
+.sci-row .ico{font-size:.85rem;width:15px;text-align:center;flex-shrink:0}
+.sci-row a{color:#1a5c2c;text-decoration:none}
+.sci-row a:hover{color:#0d3318;text-decoration:underline}
+.sci-row.doj{color:#9aaa90}
+.dd-note{margin-top:10px;background:#fffbe6;border:1px solid #f0d060;border-radius:7px;padding:8px 10px;font-size:.67rem;color:#6a4a00;line-height:1.5}
+
+/* SUPPORT GRID */
+.sup-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:40px}
+.sup-card{background:#fff;border:1px solid #deecd4;border-radius:14px;overflow:hidden;box-shadow:0 2px 8px rgba(13,51,24,.04);transition:transform .24s cubic-bezier(.34,1.4,.64,1),box-shadow .24s}
+.sup-card:hover{transform:translateY(-5px);box-shadow:0 16px 36px rgba(13,51,24,.11)}
+.sup-pw{height:190px;overflow:hidden;background:linear-gradient(160deg,#247a3a,#1a5c2c)}
+.sup-pw img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .4s}
+.sup-card:hover .sup-pw img{transform:scale(1.06)}
+.sup-body{padding:16px 14px 18px}
+.sup-name{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:#0d3318;margin-bottom:2px;line-height:1.2}
+.sup-desig{font-size:.68rem;color:#b8781a;font-weight:600;margin-bottom:1px}
+.sup-spec{font-size:.64rem;color:#9aaa90;margin-bottom:9px}
+.sup-rule{border:none;border-top:1px solid #eef4e8;margin-bottom:7px}
+.sup-contacts{display:flex;flex-direction:column;gap:4px}
+.sup-row{display:flex;align-items:center;gap:6px;font-size:.66rem;color:#4a6441}
+.sup-row .ico{font-size:.78rem;width:13px;text-align:center}
+.sup-row a{color:#1a5c2c;text-decoration:none}
+.sup-row a:hover{text-decoration:underline}
+.sup-row.doj{color:#aab8a0}
+
+/* CONTACT BAND */
+.fac-contact-band{background:linear-gradient(135deg,#0a2810 0%,#1a5c2c 100%);padding:48px 60px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.fac-contact-band h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:#fff;margin-bottom:8px;line-height:1.2}
+.fac-contact-band p{font-size:.82rem;color:rgba(255,255,255,.62);max-width:400px;line-height:1.65}
+.fac-contact-band .hl{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:#d4a032;display:block;margin-top:6px}
+.cb-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-cream{display:inline-block;background:#f7f3ea;color:#0d3318;padding:12px 24px;border-radius:8px;font-size:.82rem;font-weight:600;transition:all .2s;text-decoration:none;font-family:'DM Sans',sans-serif}
+.btn-cream:hover{background:#fff;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.btn-ol-light{display:inline-block;border:1.5px solid rgba(255,255,255,.35);color:rgba(255,255,255,.88);padding:12px 24px;border-radius:8px;font-size:.82rem;font-weight:600;transition:all .2s;text-decoration:none;font-family:'DM Sans',sans-serif}
+.btn-ol-light:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.6)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.sci-card{animation:fadeUp .45s ease both}
+.sci-card:nth-child(1){animation-delay:.05s}.sci-card:nth-child(2){animation-delay:.12s}.sci-card:nth-child(3){animation-delay:.19s}.sci-card:nth-child(4){animation-delay:.26s}
+.sup-card{animation:fadeUp .4s ease both}
+.sup-card:nth-child(1){animation-delay:.04s}.sup-card:nth-child(2){animation-delay:.09s}.sup-card:nth-child(3){animation-delay:.14s}.sup-card:nth-child(4){animation-delay:.19s}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .sci-grid{grid-template-columns:1fr 1fr}
+  .head-card{grid-template-columns:260px 1fr}
+  .head-meta{grid-template-columns:1fr}
+  .fac-intro-band,.fac-section,.fac-contact-band{padding-left:32px;padding-right:32px}
+  .sup-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:768px){
+  .head-card{grid-template-columns:1fr}
+  .head-photo{height:280px;width:100%}
+  .head-info{padding:28px 24px}
+  .head-name{font-size:1.9rem}
+  .sci-grid{grid-template-columns:1fr 1fr}
+  .sup-grid{grid-template-columns:1fr 1fr}
+  .fac-intro-band,.fac-section,.fac-contact-band{padding-left:20px;padding-right:20px}
+}
+@media(max-width:500px){
+  .sci-grid,.sup-grid{grid-template-columns:1fr}
+  .fac-stats{gap:16px}
+}
+</style>
 </head>
 <body>
 
 <div class="page-hero">
-  <div class="bc"><a href="index.html">Home</a><span>›</span> Faculty &amp; Staff</div>
+  <div class="bc"><a href="index.html">Home</a> › Faculty &amp; Staff</div>
   <h1>Faculty &amp; Staff</h1>
-  <p>The dedicated scientific team of KVK Jalaun</p>
+  <p>Meet the dedicated team of scientists and support staff serving the farmers of Jalaun district since 2005</p>
 </div>
 
+<!-- INTRO BAND -->
+<div class="fac-intro-band">
+  <div class="fac-intro-text">
+    <h2>Our Team at KVK Jalaun</h2>
+    <p>A multidisciplinary team committed to agricultural technology transfer, capacity building and farm advisory across Jalaun's 9 development blocks and 942 revenue villages — under ICAR · BUAT Banda.</p>
+  </div>
+  <div class="fac-stats">
+    <div class="fac-stat"><span class="n">5</span><span class="l">Scientists</span></div>
+    <div class="fac-stat"><span class="n">4</span><span class="l">Tech / Admin</span></div>
+    <div class="fac-stat"><span class="n">1</span><span class="l">Project Staff</span></div>
+    <div class="fac-stat"><span class="n">3</span><span class="l">Support Staff</span></div>
+  </div>
+</div>
 
-<section class="sec">
-  <div class="sh"><div class="sh-bar"></div><div><h2>Our Team</h2><p>Scientists and Subject Matter Specialists of KVK Jalaun</p></div></div>
-  <p style="font-size:.87rem;line-height:1.8;color:#364f31;max-width:780px;margin-bottom:40px">KVK Jalaun's multidisciplinary team of scientists brings together expertise in agronomy, horticulture, animal science, plant protection and soil science to deliver comprehensive support to Jalaun district farmers. Despite working with limited staff since its inception in 2005, the team has achieved commendable results in technology transfer, capacity building and farm advisory.</p>
-
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
-    <div style="background:#fff;border:1px solid #d2e6c4;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(13,51,24,.07)">
-      <div style="height:220px;background:linear-gradient(135deg,#0d3318,#247a3a);display:flex;align-items:center;justify-content:center;font-size:4rem;color:rgba(255,255,255,.35)">👨‍🔬</div>
-      <div style="padding:20px">
-        <h3 style="font-size:.95rem;font-weight:600;color:#0d3318;margin-bottom:4px">Programme Coordinator</h3>
-        <div style="font-size:.78rem;color:#b8781a;font-weight:500">KVK Jalaun, Head of Centre</div>
-        <div style="font-size:.74rem;color:#6b8264;margin-top:8px;padding-top:8px;border-top:1px solid #d2e6c4">ICAR · BUAT Banda</div>
+<!-- ── HEAD OF CENTRE ── -->
+<div class="fac-section">
+  <div class="fac-sec-head">
+    <h3>Head of Centre</h3>
+    <span class="cnt">Senior Scientist</span>
+  </div>
+  <div class="head-card">
+    <img class="head-photo" src="https://raw.githubusercontent.com/brajeshsharma-cpu/kvkjalaun-up/main/mustafa.png" alt="Dr. Mohammad Mustafa">
+    <div class="head-info">
+      <div class="head-eyebrow">
+        <span class="badge badge-gold">🏛 Head of Centre</span>
+        <span class="badge badge-ol">Senior Scientist</span>
+        <span class="badge badge-ol">Horticulture</span>
       </div>
-    </div>
-    <div style="background:#fff;border:1px solid #d2e6c4;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(13,51,24,.07)">
-      <div style="height:220px;background:linear-gradient(135deg,#1a5c2c,#36a354);display:flex;align-items:center;justify-content:center;font-size:4rem;color:rgba(255,255,255,.35)">🌾</div>
-      <div style="padding:20px">
-        <h3 style="font-size:.95rem;font-weight:600;color:#0d3318;margin-bottom:4px">SMS (Agronomy)</h3>
-        <div style="font-size:.78rem;color:#b8781a;font-weight:500">Subject Matter Specialist</div>
-        <div style="font-size:.74rem;color:#6b8264;margin-top:8px;padding-top:8px;border-top:1px solid #d2e6c4">Agronomy &amp; Crop Production</div>
-      </div>
-    </div>
-    <div style="background:#fff;border:1px solid #d2e6c4;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(13,51,24,.07)">
-      <div style="height:220px;background:linear-gradient(135deg,#2d6a1f,#5aad3a);display:flex;align-items:center;justify-content:center;font-size:4rem;color:rgba(255,255,255,.35)">🌳</div>
-      <div style="padding:20px">
-        <h3 style="font-size:.95rem;font-weight:600;color:#0d3318;margin-bottom:4px">SMS (Horticulture)</h3>
-        <div style="font-size:.78rem;color:#b8781a;font-weight:500">Subject Matter Specialist</div>
-        <div style="font-size:.74rem;color:#6b8264;margin-top:8px;padding-top:8px;border-top:1px solid #d2e6c4">Horticulture, Vegetables &amp; Fruits</div>
-      </div>
-    </div>
-    <div style="background:#fff;border:1px solid #d2e6c4;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(13,51,24,.07)">
-      <div style="height:220px;background:linear-gradient(135deg,#3d4e10,#7a9620);display:flex;align-items:center;justify-content:center;font-size:4rem;color:rgba(255,255,255,.35)">🐄</div>
-      <div style="padding:20px">
-        <h3 style="font-size:.95rem;font-weight:600;color:#0d3318;margin-bottom:4px">SMS (Animal Science)</h3>
-        <div style="font-size:.78rem;color:#b8781a;font-weight:500">Subject Matter Specialist</div>
-        <div style="font-size:.74rem;color:#6b8264;margin-top:8px;padding-top:8px;border-top:1px solid #d2e6c4">Livestock &amp; Animal Husbandry</div>
-      </div>
-    </div>
-    <div style="background:#fff;border:1px solid #d2e6c4;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(13,51,24,.07)">
-      <div style="height:220px;background:linear-gradient(135deg,#1a3d50,#2a7a8c);display:flex;align-items:center;justify-content:center;font-size:4rem;color:rgba(255,255,255,.35)">🧪</div>
-      <div style="padding:20px">
-        <h3 style="font-size:.95rem;font-weight:600;color:#0d3318;margin-bottom:4px">SMS (Soil Science)</h3>
-        <div style="font-size:.78rem;color:#b8781a;font-weight:500">Subject Matter Specialist</div>
-        <div style="font-size:.74rem;color:#6b8264;margin-top:8px;padding-top:8px;border-top:1px solid #d2e6c4">Soil Science &amp; Agri. Chemistry</div>
-      </div>
-    </div>
-    <div style="background:#fff;border:1px solid #d2e6c4;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(13,51,24,.07)">
-      <div style="height:220px;background:linear-gradient(135deg,#4a1a1a,#9c3a3a);display:flex;align-items:center;justify-content:center;font-size:4rem;color:rgba(255,255,255,.35)">🌿</div>
-      <div style="padding:20px">
-        <h3 style="font-size:.95rem;font-weight:600;color:#0d3318;margin-bottom:4px">SMS (Plant Protection)</h3>
-        <div style="font-size:.78rem;color:#b8781a;font-weight:500">Subject Matter Specialist</div>
-        <div style="font-size:.74rem;color:#6b8264;margin-top:8px;padding-top:8px;border-top:1px solid #d2e6c4">Pest &amp; Disease Management</div>
+      <div class="head-name">Dr. Mohammad Mustafa</div>
+      <div class="head-desig">Senior Scientist cum Head</div>
+      <div class="head-spec">KVK Jalaun · ICAR · BUAT Banda · Jalaun (UP) – 285 001</div>
+      <hr class="head-rule">
+      <div class="head-meta">
+        <div class="mi"><span class="lbl">Specialisation</span><span class="val">Horticulture</span></div>
+        <div class="mi"><span class="lbl">Date of Joining</span><span class="val">12 December 2017</span></div>
+        <div class="mi"><span class="lbl">Mobile</span><span class="val"><a href="tel:9755362641">9755362641</a></span></div>
+        <div class="mi"><span class="lbl">Email</span><span class="val"><a href="mailto:m.mustafa123@rediffmail.com">m.mustafa123@rediffmail.com</a></span></div>
+        <div class="mi" style="grid-column:1/-1"><span class="lbl">Address</span><span class="val">Govt. Agriculture Farm, Rura Mallu, PO Shahjadpura, Distt. Jalaun (UP) – 285 001</span></div>
       </div>
     </div>
   </div>
+</div>
 
-  <div style="margin-top:48px">
-    <div class="sh"><div class="sh-bar"></div><div><h2>Dr Vister Joshi</h2><p>Featured at Doordarshan Kisan — 22 September 2023</p></div></div>
-    <div style="display:flex;gap:28px;align-items:center;background:#fff;border:1px solid #d2e6c4;border-radius:14px;padding:28px">
-      <div style="width:100px;height:100px;background:linear-gradient(135deg,#0d3318,#247a3a);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:rgba(255,255,255,.4);flex-shrink:0">👨‍🌾</div>
-      <div>
-        <h3 style="font-size:1rem;color:#0d3318;font-weight:600;margin-bottom:6px">Dr Vister Joshi</h3>
-        <div style="font-size:.78rem;color:#b8781a;font-weight:600;margin-bottom:10px">Subject Matter Specialist — KVK Jalaun</div>
-        <p style="font-size:.84rem;color:#364f31;line-height:1.7">Dr Vister Joshi from KVK Jalaun delivered his expert views on <strong>Agricultural Start-ups</strong> at Doordarshan Kisan on 22nd September 2023, encouraging rural youth of Jalaun district to take up agri-entrepreneurship as a viable livelihood option. This appearance highlighted KVK Jalaun's commitment to promoting agri-enterprise beyond traditional farming.</p>
+<!-- ── SUBJECT MATTER SPECIALISTS ── -->
+<div class="fac-section alt-bg">
+  <div class="fac-sec-head">
+    <h3>Subject Matter Specialists</h3>
+    <span class="cnt">4 Scientists</span>
+  </div>
+  <div class="sci-grid">
+
+    <div class="sci-card">
+      <div class="sci-pw">
+        <img src="https://raw.githubusercontent.com/brajeshsharma-cpu/kvkjalaun-up/main/manjul.png" alt="Dr. Manjul Pandey">
+        <span class="sci-tag t-pp">Plant Protection</span>
+      </div>
+      <div class="sci-body">
+        <div class="sci-name">Dr. Manjul Pandey</div>
+        <div class="sci-desig">Subject Matter Specialist</div>
+        <div class="sci-spec">Plant Protection</div>
+        <hr class="sci-rule">
+        <div class="sci-contacts">
+          <div class="sci-row doj"><span class="ico">📅</span>12 December 2017</div>
+          <div class="sci-row"><span class="ico">📞</span><a href="tel:9450127662">9450127662</a></div>
+          <div class="sci-row"><span class="ico">✉️</span><a href="mailto:manjul_csa@rediffmail.com">manjul_csa@rediffmail.com</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sci-card">
+      <div class="sci-pw">
+        <img src="https://raw.githubusercontent.com/brajeshsharma-cpu/kvkjalaun-up/main/rajkumari.jpg" alt="Dr. Rajkumari">
+        <span class="sci-tag t-hs">Home Science</span>
+      </div>
+      <div class="sci-body">
+        <div class="sci-name">Dr. Rajkumari</div>
+        <div class="sci-desig">Subject Matter Specialist</div>
+        <div class="sci-spec">Home Science</div>
+        <hr class="sci-rule">
+        <div class="sci-contacts">
+          <div class="sci-row doj"><span class="ico">📅</span>13 December 2017</div>
+          <div class="sci-row"><span class="ico">📞</span><a href="tel:9721014112">9721014112</a></div>
+          <div class="sci-row"><span class="ico">✉️</span><a href="mailto:raj1831977@gmail.com">raj1831977@gmail.com</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sci-card">
+      <div class="sci-pw">
+        <img src="https://raw.githubusercontent.com/brajeshsharma-cpu/kvkjalaun-up/main/vister.jpg" alt="Dr. Vister Joshi">
+        <span class="sci-tag t-ext">Agri. Extension</span>
+      </div>
+      <div class="sci-body">
+        <div class="sci-name">Dr. Vister Joshi</div>
+        <div class="sci-desig">Subject Matter Specialist</div>
+        <div class="sci-spec">Agriculture Extension</div>
+        <hr class="sci-rule">
+        <div class="sci-contacts">
+          <div class="sci-row doj"><span class="ico">📅</span>28 December 2017</div>
+          <div class="sci-row"><span class="ico">📞</span><a href="tel:9873601614">9873601614</a></div>
+          <div class="sci-row"><span class="ico">✉️</span><a href="mailto:visterjoshi@gmail.com">visterjoshi@gmail.com</a></div>
+        </div>
+        <div class="dd-note">📺 <strong>Doordarshan Kisan</strong> — Expert views on Agricultural Start-ups for Jalaun's rural youth</div>
+      </div>
+    </div>
+
+    <div class="sci-card">
+      <div class="sci-pw">
+        <img src="https://raw.githubusercontent.com/brajeshsharma-cpu/kvkjalaun-up/main/maroof.png" alt="Dr. Maroof Ahmad">
+        <span class="sci-tag t-as">Animal Science</span>
+      </div>
+      <div class="sci-body">
+        <div class="sci-name">Dr. Maroof Ahmad</div>
+        <div class="sci-desig">Subject Matter Specialist</div>
+        <div class="sci-spec">Animal Science</div>
+        <hr class="sci-rule">
+        <div class="sci-contacts">
+          <div class="sci-row doj"><span class="ico">📅</span>23 January 2018</div>
+          <div class="sci-row"><span class="ico">📞</span><a href="tel:8708824986">8708824986</a></div>
+          <div class="sci-row"><span class="ico">✉️</span><a href="mailto:maroofahmad786@yahoo.co.in">maroofahmad786@yahoo.co.in</a></div>
+        </div>
+        <div class="dd-note">📺 <strong>Doordarshan Kisan</strong> — Expert views on Animal rearing in District Jalaun for youth</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── TECHNICAL & ADMINISTRATIVE ── -->
+<div class="fac-section">
+  <div class="fac-sec-head">
+    <h3>Technical &amp; Administrative Staff</h3>
+    <span class="cnt">4 Staff</span>
+  </div>
+  <div class="sup-grid">
+
+    <div class="sup-card">
+      <div class="sup-pw"><img src="https://raw.githubusercontent.com/brajeshsharma-cpu/kvkjalaun-up/main/satyapal.png" alt="Satyapal Manghani"></div>
+      <div class="sup-body">
+        <div class="sup-name">Satyapal Manghani</div>
+        <div class="sup-desig">Assistant</div>
+        <div class="sup-spec">Administrative</div>
+        <hr class="sup-rule">
+        <div class="sup-contacts">
+          <div class="sup-row doj"><span class="ico">📅</span>11 December 2017</div>
+          <div class="sup-row"><span class="ico">📞</span><a href="tel:7275902474">7275902474</a></div>
+          <div class="sup-row" style="font-size:.62rem"><span class="ico">✉️</span><a href="mailto:satypalmangahani@rediffmail.com">satypalmangahani@rediffmail.com</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sup-card">
+      <div class="sup-pw"><img src="https://raw.githubusercontent.com/brajeshsharma-cpu/kvkjalaun-up/main/brajesh.png" alt="Er. Brajesh Sharma"></div>
+      <div class="sup-body">
+        <div class="sup-name">Er. Brajesh Sharma</div>
+        <div class="sup-desig">Programme Asst. (Computer)</div>
+        <div class="sup-spec">Computer / IT</div>
+        <hr class="sup-rule">
+        <div class="sup-contacts">
+          <div class="sup-row doj"><span class="ico">📅</span>16 December 2017</div>
+          <div class="sup-row"><span class="ico">📞</span><a href="tel:7000403743">7000403743</a></div>
+          <div class="sup-row" style="font-size:.62rem"><span class="ico">✉️</span><a href="mailto:brajeshsharma.oist@gmail.com">brajeshsharma.oist@gmail.com</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sup-card">
+      <div class="sup-pw"><img src="https://raw.githubusercontent.com/brajeshsharma-cpu/kvkjalaun-up/main/satish.png" alt="Satish Kumar"></div>
+      <div class="sup-body">
+        <div class="sup-name">Satish Kumar</div>
+        <div class="sup-desig">Programme Asst. (Farm Mgr)</div>
+        <div class="sup-spec">Farm Management / Lab Tech.</div>
+        <hr class="sup-rule">
+        <div class="sup-contacts">
+          <div class="sup-row doj"><span class="ico">📅</span>22 December 2017</div>
+          <div class="sup-row"><span class="ico">📞</span><a href="tel:8896030233">8896030233</a></div>
+          <div class="sup-row"><span class="ico">✉️</span><a href="mailto:stskumar.2001@gmail.com">stskumar.2001@gmail.com</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sup-card">
+      <div class="sup-pw"><img src="https://raw.githubusercontent.com/brajeshsharma-cpu/kvkjalaun-up/main/sarad.jpg" alt="Sarad Chandra"></div>
+      <div class="sup-body">
+        <div class="sup-name">Sarad Chandra</div>
+        <div class="sup-desig">Stenographer-III</div>
+        <div class="sup-spec">&nbsp;</div>
+        <hr class="sup-rule">
+        <div class="sup-contacts">
+          <div class="sup-row doj"><span class="ico">📅</span>11 December 2017</div>
+          <div class="sup-row"><span class="ico">📞</span><a href="tel:9648711425">9648711425</a></div>
+          <div class="sup-row"><span class="ico">✉️</span><a href="mailto:sonu.son53@gmail.com">sonu.son53@gmail.com</a></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── PROJECT STAFF ── -->
+<div class="fac-section alt-bg">
+  <div class="fac-sec-head">
+    <h3>Project Staff</h3>
+    <span class="cnt">NICRA Project</span>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:40px">
+    <div class="sup-card">
+      <div class="sup-pw"><img src="https://raw.githubusercontent.com/brajeshsharma-cpu/kvkjalaun-up/main/surjeet.jpg" alt="Surjeet Pandey"></div>
+      <div class="sup-body">
+        <div class="sup-name">Surjeet Pandey</div>
+        <div class="sup-desig">Senior Research Fellow (SRF)</div>
+        <div class="sup-spec">NICRA Project</div>
+        <hr class="sup-rule">
+        <div class="sup-contacts">
+          <div class="sup-row doj"><span class="ico">📅</span>02 June 2022</div>
+          <div class="sup-row"><span class="ico">📞</span><a href="tel:6266562634">6266562634</a></div>
+          <div class="sup-row"><span class="ico">✉️</span><a href="mailto:surjeethorti@gmail.com">surjeethorti@gmail.com</a></div>
+        </div>
       </div>
     </div>
   </div>
-</section>
+</div>
+
+<!-- ── SUPPORTING STAFF ── -->
+<div class="fac-section">
+  <div class="fac-sec-head">
+    <h3>Supporting Staff</h3>
+    <span class="cnt">3 Staff</span>
+  </div>
+  <div class="sup-grid">
+
+    <div class="sup-card">
+      <div class="sup-pw"><img src="https://raw.githubusercontent.com/brajeshsharma-cpu/kvkjalaun-up/main/banarasi.png" alt="Banarasi"></div>
+      <div class="sup-body">
+        <div class="sup-name">Banarasi</div>
+        <div class="sup-desig">Driver</div>
+        <div class="sup-spec">&nbsp;</div>
+        <hr class="sup-rule">
+        <div class="sup-contacts">
+          <div class="sup-row doj"><span class="ico">📅</span>07 May 2005</div>
+          <div class="sup-row"><span class="ico">📞</span><a href="tel:9634138056">9634138056</a></div>
+          <div class="sup-row"><span class="ico">✉️</span><a href="mailto:kvkjalaun@gmail.com">kvkjalaun@gmail.com</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sup-card">
+      <div class="sup-pw"><img src="https://raw.githubusercontent.com/brajeshsharma-cpu/kvkjalaun-up/main/pankaj.png" alt="Pankaj Kumar Shukla"></div>
+      <div class="sup-body">
+        <div class="sup-name">Pankaj Kumar Shukla</div>
+        <div class="sup-desig">Driver</div>
+        <div class="sup-spec">&nbsp;</div>
+        <hr class="sup-rule">
+        <div class="sup-contacts">
+          <div class="sup-row doj"><span class="ico">📅</span>19 December 2017</div>
+          <div class="sup-row"><span class="ico">📞</span><a href="tel:9466386757">9466386757</a></div>
+          <div class="sup-row"><span class="ico">✉️</span><a href="mailto:shuklaji99999@gmail.com">shuklaji99999@gmail.com</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sup-card">
+      <div class="sup-pw"><img src="https://raw.githubusercontent.com/brajeshsharma-cpu/kvkjalaun-up/main/balakram.png" alt="Balak Ram"></div>
+      <div class="sup-body">
+        <div class="sup-name">Balak Ram</div>
+        <div class="sup-desig">Attendant</div>
+        <div class="sup-spec">Supporting Staff</div>
+        <hr class="sup-rule">
+        <div class="sup-contacts">
+          <div class="sup-row doj"><span class="ico">📅</span>02 December 2005</div>
+          <div class="sup-row"><span class="ico">📞</span><a href="tel:8052657540">8052657540</a></div>
+          <div class="sup-row"><span class="ico">✉️</span><a href="mailto:kvkjalaun@gmail.com">kvkjalaun@gmail.com</a></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CONTACT BAND -->
+<div class="fac-contact-band">
+  <div>
+    <h3>Get in Touch with Our Team</h3>
+    <p>For advisory, training enquiries or to consult any of our Subject Matter Specialists — visit KVK Jalaun or call toll-free.</p>
+    <span class="hl">1800-180-1551</span>
+  </div>
+  <div class="cb-btns">
+    <a href="contact.html" class="btn-cream">📍 Visit KVK Jalaun</a>
+    <a href="mailto:kvkjalaun@gmail.com" class="btn-ol-light">✉️ kvkjalaun@gmail.com</a>
+  </div>
+</div>
 
 <script src="shared.js"></script>
 </body>
